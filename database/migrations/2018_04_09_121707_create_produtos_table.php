@@ -15,7 +15,11 @@ class CreateProdutosTable extends Migration
     {
         Schema::create('produtos', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('nome',30);
+            $table->text('descricao')->nullable();
+            $table->float('valor',8,2)->default(0); //se o usuario nao preencher sera gravado o valor zero
             $table->timestamps();
+            $table->softDeletes();  
         });
     }
 
